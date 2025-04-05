@@ -1,4 +1,15 @@
-.env
+# Node.js
 node_modules/
 dist/
+
+# Firebase & build artifacts
+firebase-debug.log
+financial-assistant-beb2e-a44fb46d9896.json
+
+# macOS
 .DS_Store
+
+# Env and config
+.env
+*.env.local
+*.json
