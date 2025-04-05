@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#FFF1E6" rx="20" ry="20"/>
+  <circle cx="650" cy="250" r="300" fill="#FFCDB2" opacity="0.5"/>
+  <circle cx="200" cy="400" r="250" fill="#FFB4A2" opacity="0.3"/>
+
+  <!-- Logo -->
+  <g transform="translate(60, 60)">
+    <!-- Circle part of logo -->
+    <circle cx="25" cy="25" r="25" fill="url(#logo-gradient)"/>
+    <!-- Text part of logo -->
+    <text x="60" y="35" font-family="Arial, sans-serif" font-weight="bold" font-size="24" fill="#222">sharesight</text>
+  </g>
+  
+  <!-- Logo gradient -->
+  <defs>
+    <linearGradient id="logo-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF4500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFA500;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Main dashboard screen -->
+  <rect x="250" y="90" width="520" height="340" rx="8" ry="8" fill="#0F1740" stroke="#333" stroke-width="2"/>
+  <circle cx="270" cy="110" r="5" fill="#FF6347"/>
+  
+  <!-- Dashboard content area -->
+  <rect x="255" y="125" width="510" height="300" rx="4" ry="4" fill="white"/>
+  
+  <!-- Dashboard header -->
+  <text x="275" y="115" font-family="Arial, sans-serif" font-weight="bold" font-size="16" fill="white">Your portfolio</text>
+  <text x="675" y="115" font-family="Arial, sans-serif" font-size="10" fill="#BBB" text-anchor="end">Current portfolio value</text>
+  <text x="675" y="130" font-family="Arial, sans-serif" font-weight="bold" font-size="14" fill="white" text-anchor="end">$97,379.53</text>
+
+  <!-- Graph area -->
+  <rect x="275" y="145" width="470" height="150" rx="4" ry="4" fill="white" stroke="#EEE" stroke-width="1"/>
+  
+  <!-- Graph lines - stylized -->
+  <path d="M275,245 C310,220 330,260 360,230 C390,200 420,260 450,210 C480,240 510,190 540,220 C570,240 610,180 645,160 C680,175 720,195 745,180" stroke="#4682B4" fill="none" stroke-width="2"/>
+  <path d="M275,235 C310,210 330,250 360,220 C390,190 420,250 450,200 C480,230 510,180 540,210 C570,230 610,170 645,150 C680,165 720,185 745,170" stroke="#9B59B6" fill="none" stroke-width="2"/>
+  <path d="M275,255 C310,240 330,270 360,240 C390,210 420,270 450,220 C480,250 510,200 540,230 C570,250 610,190 645,170 C680,185 720,205 745,190" stroke="#E74C3C" fill="none" stroke-width="2"/>
+  <path d="M275,265 C310,250 330,280 360,250 C390,220 420,280 450,230 C480,260 510,210 540,240 C570,260 610,200 645,180 C680,195 720,215 745,200" stroke="#F1C40F" fill="none" stroke-width="2"/>
+
+  <!-- Table area -->
+  <text x="275" y="320" font-family="Arial, sans-serif" font-weight="bold" font-size="12" fill="#333">ALL INVESTMENTS</text>
+  
+  <!-- Table headers -->
+  <text x="315" y="340" font-family="Arial, sans-serif" font-size="10" fill="#777">HOLDING</text>
+  <text x="425" y="340" font-family="Arial, sans-serif" font-size="10" fill="#777">PRICE</text>
+  <text x="475" y="340" font-family="Arial, sans-serif" font-size="10" fill="#777">QTY</text>
+  <text x="525" y="340" font-family="Arial, sans-serif" font-size="10" fill="#777">VALUE</text>
+  <text x="575" y="340" font-family="Arial, sans-serif" font-size="10" fill="#777">CAPITAL GAIN</text>
+  <text x="625" y="340" font-family="Arial, sans-serif" font-size="10" fill="#777">DIVIDEND</text>
+  <text x="675" y="340" font-family="Arial, sans-serif" font-size="10" fill="#777">CURRENCY</text>
+  <text x="725" y="340" font-family="Arial, sans-serif" font-size="10" fill="#777">RETURN %</text>
+
+  <!-- Table rows (simplified) -->
+  <rect x="275" y="345" width="470" height="1" fill="#EEE"/>
+  <text x="275" y="360" font-family="Arial, sans-serif" font-size="10" fill="#333">AAPL</text>
+  <text x="275" y="380" font-family="Arial, sans-serif" font-size="10" fill="#333">CSCO</text>
+  <text x="275" y="400" font-family="Arial, sans-serif" font-size="10" fill="#333">GOOGL</text>
+  <text x="275" y="420" font-family="Arial, sans-serif" font-size="10" fill="#333">Total</text>
+
+  <!-- Mobile app mockup -->
+  <rect x="700" y="170" width="160" height="320" rx="20" ry="20" fill="white" stroke="#CCC" stroke-width="2"/>
+  
+  <!-- Mobile app screen -->
+  <rect x="705" y="175" width="150" height="310" rx="16" ry="16" fill="white"/>
+  
+  <!-- Mobile app content -->
+  <text x="715" y="200" font-family="Arial, sans-serif" font-size="12" fill="#333">Total return</text>
+  <text x="715" y="220" font-family="Arial, sans-serif" font-weight="bold" font-size="16" fill="#333">$99,273.26</text>
+
+  <!-- Mobile graph -->
+  <rect x="710" y="280" width="140" height="100" rx="4" ry="4" fill="white"/>
+  <path d="M710,350 C725,330 740,360 755,320 C770,340 785,310 800,330 C815,350 830,320 845,340" stroke="#E74C3C" fill="none" stroke-width="2"/>
+  <path d="M710,360 C725,340 740,370 755,330 C770,350 785,320 800,340 C815,360 830,330 845,350" stroke="#9B59B6" fill="none" stroke-width="2" opacity="0.7"/>
+  <path d="M710,370 C725,350 740,380 755,340 C770,360 785,330 800,350 C815,370 830,340 845,360" stroke="#3498DB" fill="none" stroke-width="2" opacity="0.5"/>
+
+  <!-- Feature buttons -->
+  <g transform="translate(120, 250)">
+    <!-- Button 1 -->
+    <rect x="0" y="0" width="120" height="60" rx="10" ry="10" fill="#E8EAFF" stroke="#D0D4FF" stroke-width="1"/>
+    <circle cx="25" cy="30" r="15" fill="#D0D4FF" stroke="#B0B4FF" stroke-width="1"/>
+    <text x="50" y="25" font-family="Arial, sans-serif" font-size="12" fill="#333">Custom</text>
+    <text x="50" y="40" font-family="Arial, sans-serif" font-size="12" fill="#333">investments</text>
+    <text x="25" y="34" font-family="Arial, sans-serif" font-size="16" fill="#6366F1" text-anchor="middle">+</text>
+    
+    <!-- Button 2 -->
+    <rect x="0" y="80" width="120" height="60" rx="10" ry="10" fill="#E8EAFF" stroke="#D0D4FF" stroke-width="1"/>
+    <circle cx="25" cy="110" r="15" fill="#D0D4FF" stroke="#B0B4FF" stroke-width="1"/>
+    <text x="50" y="105" font-family="Arial, sans-serif" font-size="12" fill="#333">Download</text>
+    <text x="50" y="120" font-family="Arial, sans-serif" font-size="12" fill="#333">tax reports</text>
+    <text x="25" y="114" font-family="Arial, sans-serif" font-size="16" fill="#6366F1" text-anchor="middle">↓</text>
+    
+    <!-- Button 3 -->
+    <rect x="0" y="160" width="120" height="60" rx="10" ry="10" fill="#E8EAFF" stroke="#D0D4FF" stroke-width="1"/>
+    <circle cx="25" cy="190" r="15" fill="#D0D4FF" stroke="#B0B4FF" stroke-width="1"/>
+    <text x="50" y="185" font-family="Arial, sans-serif" font-size="12" fill="#333">Integrate</text>
+    <text x="50" y="200" font-family="Arial, sans-serif" font-size="12" fill="#333">brokers</text>
+    <text x="25" y="194" font-family="Arial, sans-serif" font-size="16" fill="#6366F1" text-anchor="middle">⚙</text>
+  </g>
+</svg>

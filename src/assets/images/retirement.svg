@@ -1,0 +1,14 @@
+<svg width="1024" height="535" viewBox="0 0 1024 535" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="#F01A3C" />
+
+    <!-- White Box for ET -->
+    <rect x="180" y="160" width="120" height="120" fill="white" />
+
+    <!-- ET Text -->
+    <text x="200" y="240" font-family="Times New Roman, serif" font-size="80" font-weight="bold" fill="#F01A3C">ET</text>
+
+    <!-- Economic Times Text -->
+    <text x="330" y="240" font-family="Times New Roman, serif" font-size="80" fill="white">Economic</text>
+    <text x="680" y="240" font-family="Times New Roman, serif" font-size="80" font-weight="bold" fill="white">Times.com</text>
+</svg>
