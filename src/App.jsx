@@ -87,7 +87,7 @@ const AppContent = ({ darkMode, onDarkModeChange }) => {
             }}
             onClick={() => setCurrentTab(-1)}
           >
-            StockSense
+            StarkFinance
           </Typography>
 
           <Box sx={{ display: 'flex', alignItems: 'center', flex: 1, mx: 4 }}>

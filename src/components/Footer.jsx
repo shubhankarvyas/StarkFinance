@@ -100,7 +100,7 @@ const Footer = () => {
                 </Grid>
                 <Box mt={5}>
                     <Typography variant="body2" color="text.secondary" align="center">
-                        © {new Date().getFullYear()} StockSense. All rights reserved.
+                        © {new Date().getFullYear()} StarkFinance. All rights reserved.
                     </Typography>
                 </Box>
             </Container>

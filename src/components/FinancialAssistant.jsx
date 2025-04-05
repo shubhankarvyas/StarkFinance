@@ -41,7 +41,7 @@ const quickSuggestions = [
 // Welcome message constant to ensure consistency
 const WELCOME_MESSAGE = {
   type: 'assistant',
-  content: "👋 Hi! I'm Zeni, your personal financial guide. Whether you're looking to grow your wealth, plan for the future, or make smarter money decisions, I'm here to help with personalized advice tailored just for you. What's on your mind today?",
+  content: "👋 Hi! I'm Vision, your personal financial guide. Whether you're looking to grow your wealth, plan for the future, or make smarter money decisions, I'm here to help with personalized advice tailored just for you. What's on your mind today?",
   timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
   id: 'welcome-message'
 };
@@ -507,7 +507,7 @@ const FinancialAssistant = () => {
         .map(msg => `${msg.type === 'user' ? 'User' : 'Assistant'}: ${msg.content}`)
         .join('\n\n');
 
-      const prompt = `You are a friendly and knowledgeable financial advisor named Zeni having a natural conversation. Based on this conversation history:
+      const prompt = `You are a friendly and knowledgeable financial advisor named Vision having a natural conversation. Based on this conversation history:
 
 ${context}
 
@@ -754,7 +754,7 @@ If you don't know something or if it's outside your expertise, clearly state tha
               fontStyle: 'italic'
             }}
           >
-            {message.type === 'user' ? 'You' : 'Zeni'} • {message.timestamp || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+            {message.type === 'user' ? 'You' : 'Vision'} • {message.timestamp || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
           </Typography>
         </Box>
       </Box>
@@ -834,7 +834,7 @@ If you don't know something or if it's outside your expertise, clearly state tha
           </Avatar>
           <Box>
             <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
-              Zeni
+              Vision
             </Typography>
             <Typography variant="caption" color="text.secondary">
               Your Personal Finance Guide
@@ -912,7 +912,7 @@ If you don't know something or if it's outside your expertise, clearly state tha
             >
               <CircularProgress size={20} sx={{ mr: 1 }} />
               <Typography variant="body2" color="text.secondary">
-                Zeni is thinking...
+                Vision is thinking...
               </Typography>
             </Box>
           </Fade>
@@ -990,7 +990,7 @@ If you don't know something or if it's outside your expertise, clearly state tha
           inputRef={inputRef}
           fullWidth
           variant="standard"
-          placeholder="Ask Zeni about your finances..."
+          placeholder="Ask Vision about your finances..."
           value={inputState}
           onChange={handleInputChange}
           onKeyDown={handleKeyPress}

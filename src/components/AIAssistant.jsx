@@ -45,7 +45,7 @@ const AIAssistant = () => {
                 const { messages: historicalMessages } = await getChatHistory();
                 if (historicalMessages.length === 0) {
                     setMessages([{
-                        text: 'Hi! I\'m your AI assistant. How can I help you today?',
+                        text: 'Hi! I\'m your Vision assistant. How can I help you today?',
                         sender: 'ai'
                     }]);
                 } else {
@@ -54,7 +54,7 @@ const AIAssistant = () => {
             } catch (error) {
                 console.error('Error loading chat history:', error);
                 setMessages([{
-                    text: 'Hi! I\'m your AI assistant. How can I help you today?',
+                    text: 'Hi! I\'m your AI assistant, Jarvis. How can I help you today?',
                     sender: 'ai'
                 }]);
             } finally {
@@ -153,7 +153,7 @@ const AIAssistant = () => {
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                             <SmartToyIcon sx={{ color: theme.palette.primary.main }} />
                             <Typography variant="h6" sx={{ fontSize: '1.1rem', fontWeight: 600 }}>
-                                AI Assistant
+                                Jarvis
                             </Typography>
                         </Box>
                         <IconButton size="small" onClick={() => setIsOpen(false)}>
