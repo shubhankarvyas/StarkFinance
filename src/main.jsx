@@ -3,7 +3,7 @@ import App from './App';
 import ReactDOM from 'react-dom/client';
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import { BrowserRouter } from 'react-router-dom';
-import { UserProfileProvider } from './contexts/UserProfileContext';
+import { UserProfileProvider } from '../contexts/userprofilecontext';
 import { AuthProvider } from './contexts/AuthContext';
 
 const Root = () => {
