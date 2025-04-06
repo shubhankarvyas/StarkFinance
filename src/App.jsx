@@ -13,9 +13,10 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import PersonIcon from '@mui/icons-material/Person';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 
-import { UserProfileProvider } from './contexts/UserProfileContext';
+import { UserProfileProvider } from './contexts/userprofilecontext';
+import { useUserProfile } from './contexts/userprofilecontext';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
-import { useUserProfile } from './contexts/UserProfileContext';
+
 
 import Login from './components/Login';
 import Footer from './components/Footer';
