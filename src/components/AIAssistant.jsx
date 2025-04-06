@@ -49,7 +49,7 @@ const AIAssistant = () => {
     useEffect(() => {
         // Initialize with a welcome message instead of loading from Firebase
         setMessages([{
-            text: 'Hi! I\'m your Vision AI assistant. How can I help you today?',
+            text: 'Hi! I\'m your Vision AI Assistant. How can I help you today?',
             sender: 'ai'
         }]);
         setIsLoading(false);
