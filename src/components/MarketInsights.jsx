@@ -112,7 +112,7 @@ const MarketInsights = () => {
                 borderRadius: 3,
                 boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
                 height: '100%',
-                height: '500px',
+                maxHeight: '500px',
                 display: 'flex',
                 flexDirection: 'column'
             }}
