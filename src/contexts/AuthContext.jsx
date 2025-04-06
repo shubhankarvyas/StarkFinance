@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { subscribeToAuthChanges, signOutUser } from '../services/auth';
-import { useUserProfile } from './UserProfileContext';
+import { useUserProfile } from ' ./userprofilecontext';
 import { doc, getDoc, setDoc, getFirestore } from 'firebase/firestore';
 import { app } from '../services/firebase.jsx';
 
