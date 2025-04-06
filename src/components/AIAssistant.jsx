@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useAuth } from '../contexts/AuthContext';
 import {
     Box,
     Paper,
@@ -14,15 +15,16 @@ import {
     useTheme,
     CircularProgress,
     Zoom,
-    Fade
+    Fade,
+    Alert
 } from '@mui/material';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import CloseIcon from '@mui/icons-material/Close';
 import SendIcon from '@mui/icons-material/Send';
-import { saveChatMessage, getChatHistory } from '../services/chatHistory';
 
 const AIAssistant = () => {
+    const { user } = useAuth();
     const theme = useTheme();
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([]);
@@ -33,6 +35,11 @@ const AIAssistant = () => {
     const [isTyping, setIsTyping] = useState(false);
     const [isBotVisible, setIsBotVisible] = useState(true);
 
+    // Authentication check - prevent rendering if user is not authenticated
+    if (!user) {
+        return null; // Don't render anything if user is not authenticated
+    }
+
     const scrollToBottom = () => {
         if (messagesEndRef.current) {
             messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -40,29 +47,13 @@ const AIAssistant = () => {
     };
 
     useEffect(() => {
-        const loadChatHistory = async () => {
-            try {
-                const { messages: historicalMessages } = await getChatHistory();
-                if (historicalMessages.length === 0) {
-                    setMessages([{
-                        text: 'Hi! I\'m your Vision AI assistant. How can I help you today?',
-                        sender: 'ai'
-                    }]);
-                } else {
-                    setMessages(historicalMessages);
-                }
-            } catch (error) {
-                console.error('Error loading chat history:', error);
-                setMessages([{
-                    text: 'Hi! I\'m your AI assistant, Jarvis. How can I help you today?',
-                    sender: 'ai'
-                }]);
-            } finally {
-                setIsLoading(false);
-            }
-        };
+        // Initialize with a welcome message instead of loading from Firebase
+        setMessages([{
+            text: 'Hi! I\'m your Vision AI assistant. How can I help you today?',
+            sender: 'ai'
+        }]);
+        setIsLoading(false);
 
-        loadChatHistory();
         const timer = setTimeout(() => setIsBotVisible(true), 500);
         return () => clearTimeout(timer);
     }, []);

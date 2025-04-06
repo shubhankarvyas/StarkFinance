@@ -248,11 +248,13 @@ const ExpenseTracker = () => {
 
     return (
         <Paper elevation={3} sx={{
-            p: 3,
-            mb: 3,
+            p: { xs: 2, sm: 3 },
+            mb: { xs: 2, sm: 3 },
             background: `linear-gradient(145deg, ${theme.palette.background.paper} 0%, ${theme.palette.background.default} 100%)`,
-            borderRadius: 3,
-            boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
+            borderRadius: { xs: 2, sm: 3 },
+            boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+            mx: { xs: -2, sm: 0 },
+            width: { xs: '100vw', sm: 'auto' }
         }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
                 <Typography variant="h6" sx={{ fontWeight: 600 }}>
@@ -286,8 +288,8 @@ const ExpenseTracker = () => {
                 </Box>
             </Box>
 
-            <Grid container spacing={3}>
-                <Grid item xs={12} md={8}>
+            <Grid container spacing={{ xs: 2, sm: 3 }}>
+                <Grid item xs={12} sm={12} md={8}>
                     <TableContainer component={Paper} sx={{ borderRadius: 2, boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
                         <Table>
                             <TableHead>
@@ -366,7 +368,7 @@ const ExpenseTracker = () => {
                         </Table>
                     </TableContainer>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} sm={12} md={4}>
                     <Paper sx={{
                         p: 3,
                         borderRadius: 2,

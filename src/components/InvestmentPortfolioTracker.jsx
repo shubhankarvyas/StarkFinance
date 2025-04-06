@@ -199,11 +199,13 @@ const InvestmentPortfolioTracker = ({ userId }) => {
 
     return (
         <Paper elevation={3} sx={{
-            p: 3,
-            mb: 3,
+            p: { xs: 2, sm: 3 },
+            mb: { xs: 2, sm: 3 },
             background: `linear-gradient(145deg, ${theme.palette.background.paper} 0%, ${theme.palette.background.default} 100%)`,
-            borderRadius: 3,
+            borderRadius: { xs: 2, sm: 3 },
             boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+            mx: { xs: -2, sm: 0 },
+            width: { xs: '100vw', sm: 'auto' },
             transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
             '&:hover': {
                 transform: 'translateY(-5px)',
@@ -234,8 +236,8 @@ const InvestmentPortfolioTracker = ({ userId }) => {
                 </Button>
             </Box>
 
-            <Grid container spacing={3} sx={{ mb: 4 }}>
-                <Grid item xs={12} md={8}>
+            <Grid container spacing={{ xs: 2, sm: 3 }} sx={{ mb: 4 }}>
+                <Grid item xs={12} sm={12} md={8}>
                     <TableContainer component={Paper} sx={{
                         borderRadius: 2,
                         boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
@@ -306,7 +308,7 @@ const InvestmentPortfolioTracker = ({ userId }) => {
                         </Table>
                     </TableContainer>
                 </Grid>
-                <Grid item xs={12} md={4}>
+                <Grid item xs={12} sm={12} md={4}>
                     <Paper sx={{ p: 3, borderRadius: 2, height: '100%', boxShadow: '0 4px 12px rgba(0,0,0,0.05)' }}>
                         <Typography variant="h6" gutterBottom sx={{ fontWeight: 600 }}>
                             Portfolio Summary
