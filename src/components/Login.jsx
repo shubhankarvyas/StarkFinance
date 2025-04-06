@@ -14,7 +14,7 @@ import {
     IconButton,
     Snackbar,
 } from '@mui/material';
-import { useUserProfile } from '../contexts/UserProfileContext';
+import { useUserProfile } from '../contexts/userprofilecontext';
 import { useAuth } from '../contexts/AuthContext';
 import PersonIcon from '@mui/icons-material/Person';
 import VisibilityIcon from '@mui/icons-material/Visibility';

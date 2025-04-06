@@ -15,7 +15,7 @@ import {
     Switch,
     FormControlLabel
 } from '@mui/material';
-import { useUserProfile } from '../contexts/UserProfileContext';
+import { useUserProfile } from '../contexts/userprofilecontext';
 import { useAuth } from '../contexts/AuthContext';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 
