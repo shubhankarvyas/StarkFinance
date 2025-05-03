@@ -7,7 +7,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://localhost:5001,https://stark-finance-rc24-r6tbyajb5-shubhankar-vyas-projects.vercel.app/',
+        target: 'http://localhost:5001,https://stark-finance-rc24.vercel.app/',
         changeOrigin: true,
         secure: false
       }
