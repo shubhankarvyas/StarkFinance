@@ -161,7 +161,7 @@ const MarketSentimentAnalysis = () => {
             )}
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
                 <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                    🎯 Market Sentiment Analysis
+                    Market Sentiment Analysis
                 </Typography>
                 <Button
                     startIcon={<RefreshIcon />}

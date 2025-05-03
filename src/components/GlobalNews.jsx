@@ -117,6 +117,15 @@ const GlobalNews = () => {
 
     // Get the first letter from each word in the source name
     const getInitials = (name) => {
+      if (typeof name !== 'string') {
+        if (name && typeof name.name === 'string') {
+          name = name.name;
+        } else if (name && typeof name.id === 'string') {
+          name = name.id;
+        } else {
+          name = 'N/A';
+        }
+      }
       return name.split(' ').map(word => word[0]).join('');
     };
 
@@ -159,12 +168,12 @@ const GlobalNews = () => {
       {/* Header with title and refresh button */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
         <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          📰 Global News
+          Global News
           {refreshing && <CircularProgress size={16} sx={{ ml: 1 }} />}
         </Typography>
 
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Typography variant="caption" color="text.secondary" sx={{ mr: 1 }}>
+          <Typography variant="caption" color="text.secondary" sx={{ mr: 1, display: 'inline' }}>
             Updated: {formatLastUpdated()}
           </Typography>
           <Tooltip title="Refresh news">
@@ -189,52 +198,36 @@ const GlobalNews = () => {
         px: 2
       }}>
         {news.length > 0 ? (
-          news.map((item, index) => (
-            <React.Fragment key={`${item.title}-${index}`}>
-              <ListItem
-                sx={{
-                  py: 1.5,
-                  px: 2,
-                  borderRadius: 1,
-                  mb: 1,
-                  cursor: 'pointer',
-                  transition: 'all 0.2s',
-                  bgcolor: item.trending ? 'rgba(25, 118, 210, 0.05)' : 'transparent',
-                  '&:hover': {
-                    bgcolor: 'rgba(0, 0, 0, 0.04)',
-                    transform: 'translateY(-2px)',
-                    boxShadow: '0 4px 8px rgba(0,0,0,0.05)'
-                  }
-                }}
-              >
-                <ListItemText
-                  primary={
-                    <Typography variant="body1" sx={{ fontWeight: 'medium' }}>
-                      {item.title}
-                    </Typography>
-                  }
-                  secondary={
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 1 }}>
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        {getSourceAvatar(item.source)}
-                        <Typography variant="body2" color="text.secondary">
-                          {item.source}
-                        </Typography>
-                      </Box>
-                      <Typography variant="body2" color="text.secondary">
-                        {item.time}
-                      </Typography>
-                    </Box>
-                  }
-                />
-              </ListItem>
-              {index < news.length - 1 && <Divider sx={{ my: 1, opacity: 0.6 }} />}
-            </React.Fragment>
+          news.map((item, idx) => (
+            <ListItem key={idx} alignItems="flex-start" sx={{ mb: 1, borderRadius: 1, bgcolor: 'background.paper', boxShadow: 1 }}>
+              {getSourceAvatar(item.source)}
+              <Box sx={{ ml: 2, flex: 1 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold', flex: 1 }}>
+                    {typeof item.title === 'object' ? JSON.stringify(item.title) : item.title}
+                  </Typography>
+                  <Chip
+                    label={item.category}
+                    size="small"
+                    sx={{ bgcolor: 'primary.light', color: 'primary.contrastText', fontWeight: 500 }}
+                  />
+                  <Box sx={{ ml: 1 }}>{getImpactIcon(item.impact)}</Box>
+                </Box>
+                <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
+                  {typeof item.source === 'object' ? (item.source.name || item.source.id || JSON.stringify(item.source)) : item.source} &bull; {item.time}
+                </Typography>
+                {item.snippet && (
+                  <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+                    {typeof item.snippet === 'object' ? JSON.stringify(item.snippet) : item.snippet}
+                  </Typography>
+                )}
+              </Box>
+            </ListItem>
           ))
         ) : (
-          <Box sx={{ p: 4, textAlign: 'center' }}>
-            <Typography color="text.secondary">No news available</Typography>
-          </Box>
+          <ListItem>
+            <ListItemText primary="No news available." />
+          </ListItem>
         )}
       </List>
     </Paper>

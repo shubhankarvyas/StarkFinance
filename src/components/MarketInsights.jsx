@@ -118,7 +118,7 @@ const MarketInsights = () => {
             }}
         >
             <Typography variant="h6" sx={{ mb: 3, fontWeight: 600 }}>
-                📊 Market Insights
+                Market Insights
             </Typography>
 
             {error && (

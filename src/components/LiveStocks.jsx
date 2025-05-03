@@ -3,6 +3,7 @@ import { Paper, Typography, Box, ListItemText, CircularProgress, TextField, Auto
 import { fetchAllStocks, fetchStockData } from '../services/api';
 import { STOCK_UPDATE_INTERVAL } from '../config/api';
 import SearchIcon from '@mui/icons-material/Search';
+import debounce from 'lodash.debounce';
 
 const LiveStocks = ({ filteredStocks }) => {
   const theme = useTheme();
@@ -15,7 +16,8 @@ const LiveStocks = ({ filteredStocks }) => {
   useEffect(() => {
     let isMounted = true;
 
-    const fetchStocks = async () => {
+    // Debounced fetch functions
+    const debouncedFetchStocks = debounce(async () => {
       try {
         const data = await fetchAllStocks();
         if (isMounted && data && data.length > 0) {
@@ -32,12 +34,11 @@ const LiveStocks = ({ filteredStocks }) => {
       } finally {
         if (isMounted) setLoading(false);
       }
-    };
+    }, 300);
 
-    const fetchSearchedStocks = async () => {
+    const debouncedFetchSearchedStocks = debounce(async () => {
       if (selectedStocks.length > 0) {
         try {
-          // Get symbols that need to be fetched (not in stocks or searchedStocks)
           const existingSymbols = new Set([...stocks, ...searchedStocks].map(s => s.symbol));
           const uniqueSymbols = selectedStocks.filter(symbol => !existingSymbols.has(symbol));
 
@@ -55,21 +56,17 @@ const LiveStocks = ({ filteredStocks }) => {
                   const existingIndex = updatedStocks.findIndex(s => s.symbol === newStock.symbol);
 
                   if (existingIndex !== -1) {
-                    // Update existing stock
                     updatedStocks[existingIndex] = {
                       ...newStock,
                       previousPrice: updatedStocks[existingIndex].price
                     };
                   } else {
-                    // Add new stock
                     updatedStocks.push({
                       ...newStock,
                       previousPrice: newStock.price
                     });
                   }
                 });
-
-                // Keep only selected stocks
                 return updatedStocks.filter(stock => selectedStocks.includes(stock.symbol));
               });
             }
@@ -82,19 +79,21 @@ const LiveStocks = ({ filteredStocks }) => {
       } else {
         setSearchedStocks([]);
       }
-    };
+    }, 300);
 
-    fetchStocks();
-    fetchSearchedStocks();
+    debouncedFetchStocks();
+    debouncedFetchSearchedStocks();
 
     const interval = setInterval(() => {
-      fetchStocks();
-      fetchSearchedStocks();
+      debouncedFetchStocks();
+      debouncedFetchSearchedStocks();
     }, STOCK_UPDATE_INTERVAL);
 
     return () => {
       isMounted = false;
       clearInterval(interval);
+      debouncedFetchStocks.cancel();
+      debouncedFetchSearchedStocks.cancel();
     };
   }, [selectedStocks]);
 
@@ -185,7 +184,7 @@ const LiveStocks = ({ filteredStocks }) => {
       </Box>
 
       <Typography variant="h6" gutterBottom sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        📈 Live Stocks
+        Live Stocks
       </Typography>
       <Box sx={{
         width: '100%',

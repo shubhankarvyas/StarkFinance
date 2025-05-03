@@ -1,10 +1,10 @@
 // API configuration for external services
 
-export const ALPHA_VANTAGE_API_KEY = import.meta.env.VITE_ALPHA_VANTAGE_API_KEY || '';
+export const TWELVE_DATA_API_KEY = 'c2094890fd204aae97d190f35a94e095';
 export const NEWS_API_KEY = import.meta.env.VITE_NEWS_API_KEY || '';
 
 // API endpoints
-export const ALPHA_VANTAGE_BASE_URL = 'https://www.alphavantage.co/query';
+export const TWELVE_DATA_BASE_URL = 'https://api.twelvedata.com';
 export const NEWS_API_BASE_URL = 'https://newsapi.org/v2';
 
 // API request configurations

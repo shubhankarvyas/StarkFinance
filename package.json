@@ -14,18 +14,26 @@
     "@google/generative-ai": "^0.2.1",
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
-    "react-window": "^1.8.10",
-    "react-virtualized-auto-sizer": "^1.0.20",
+    "apexcharts": "^4.7.0",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
     "firebase": "^11.6.0",
     "lightweight-charts": "^5.0.5",
+    "lodash.debounce": "^4.0.8",
     "react": "^18.2.0",
+    "react-apexcharts": "^1.7.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.4.1",
+    "react-virtualized-auto-sizer": "^1.0.20",
+    "react-window": "^1.8.10",
     "recharts": "^2.15.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
     "vite": "^5.0.12"
-  }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
