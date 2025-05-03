@@ -1,0 +1,24 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "src/index.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "src/index.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "src/index.js"
+        }
+    ],
+    "env": {
+        "NODE_ENV": "production",
+        "PORT": "5001",
+        "ALLOWED_ORIGINS": "https://financial-assistant-beb2e.web.app,https://financial-assistant-beb2e.firebaseapp.com,https://stark-finance.vercel.app,https://stark-finance-rc24.vercel.app/"
+    }
+}

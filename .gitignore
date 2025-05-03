@@ -12,4 +12,4 @@ financial-assistant-beb2e-a44fb46d9896.json
 # Env and config
 .env
 *.env.local
-*.json
+
