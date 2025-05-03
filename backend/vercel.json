@@ -19,6 +19,6 @@
     "env": {
         "NODE_ENV": "production",
         "PORT": "5001",
-        "ALLOWED_ORIGINS": "https://financial-assistant-beb2e.web.app,https://financial-assistant-beb2e.firebaseapp.com,https://stark-finance.vercel.app,https://stark-finance-rc24.vercel.app/"
+        "ALLOWED_ORIGINS": "https://financial-assistant-beb2e.web.app,https://financial-assistant-beb2e.firebaseapp.com,https://stark-finance.vercel.app,https://stark-finance-rc24-r6tbyajb5-shubhankar-vyas-projects.vercel.app/"
     }
 }
