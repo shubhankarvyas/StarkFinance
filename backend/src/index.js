@@ -13,9 +13,10 @@ const app = express();
 
 // Security middleware
 app.use(helmet());
-// Configure CORS for Vercel frontend
+// Configure CORS for all allowed origins
+const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [];
 app.use(cors({
-    origin: ['https://stark-finance.vercel.app', 'http://localhost:5001'],
+    origin: allowedOrigins,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true

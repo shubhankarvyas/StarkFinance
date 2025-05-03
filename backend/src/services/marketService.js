@@ -43,6 +43,10 @@ class MarketService {
 
     async getStockData(symbol) {
         try {
+            if (!symbol) {
+                throw new Error('Stock symbol is required');
+            }
+
             // Generate mock OHLC data for the last 30 days
             const basePrices = {
                 SPY: 520, QQQ: 440, DIA: 390, VIX: 15, AAPL: 190,
@@ -50,16 +54,20 @@ class MarketService {
                 NVDA: 1200, META: 500, AMD: 160, PYPL: 70, INTC: 40,
                 CRM: 300, ADBE: 500, CSCO: 50, ORCL: 120
             };
-            
-            const basePrice = basePrices[symbol] || 100;
+
+            const basePrice = basePrices[symbol];
+            if (!basePrice) {
+                throw new Error(`Stock data not available for symbol: ${symbol}`);
+            }
+
             const now = new Date();
             const data = [];
-            
+
             // Generate 30 days of OHLC data
             for (let i = 29; i >= 0; i--) {
                 const date = new Date(now);
                 date.setDate(date.getDate() - i);
-                
+
                 // Generate realistic OHLC values with some randomness
                 const volatility = basePrice * 0.02; // 2% volatility
                 const open = basePrice + (Math.random() - 0.5) * volatility;
@@ -67,7 +75,7 @@ class MarketService {
                 const low = open - Math.random() * volatility;
                 const close = low + Math.random() * (high - low);
                 const volume = Math.floor(1000000 + Math.random() * 5000000);
-                
+
                 data.push({
                     time: date.toISOString().split('T')[0],
                     open: parseFloat(open.toFixed(2)),
@@ -77,12 +85,21 @@ class MarketService {
                     volume: volume
                 });
             }
-            
+
+            const lastPrice = data[data.length - 1].close;
+            const previousClose = data[data.length - 2].close;
+            const change = parseFloat((lastPrice - previousClose).toFixed(2));
+            const changePercent = parseFloat(((change / previousClose) * 100).toFixed(2));
+
             return {
-                symbol,
-                data: data,
-                lastPrice: data[data.length - 1].close,
-                change: parseFloat((data[data.length - 1].close - data[data.length - 2].close).toFixed(2))
+                success: true,
+                data: {
+                    symbol,
+                    lastPrice,
+                    change,
+                    changePercent,
+                    historicalData: data
+                }
             };
         } catch (error) {
             console.error("Error generating mock stock data:", error);
@@ -99,7 +116,7 @@ class MarketService {
                     volume: 1000000
                 };
             });
-            
+
             return {
                 symbol,
                 data: mockData,
