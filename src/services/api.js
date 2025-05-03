@@ -1,6 +1,4 @@
 import {
-  TWELVE_DATA_API_KEY,
-  TWELVE_DATA_BASE_URL,
   NEWS_API_KEY,
   NEWS_API_BASE_URL,
   STOCK_SYMBOLS,
@@ -8,10 +6,13 @@ import {
   NEWS_COUNTRY
 } from '../config/api';
 
+// Get the backend URL dynamically from environment variables
+const backendUrl = import.meta.env.VITE_BACKEND_URL;  // Get the URL based on the environment
+
 // Fetch market sentiment data
 export const fetchMarketSentiment = async () => {
   try {
-    const response = await fetch("/api/market/sentiment");
+    const response = await fetch(`${backendUrl}/api/market/sentiment`);
     if (!response.ok) throw new Error("Failed to fetch market sentiment");
     return await response.json();
   } catch (error) {
@@ -24,7 +25,7 @@ export const fetchMarketSentiment = async () => {
 export const fetchStockData = async (symbol) => {
   try {
     // Fetch from backend API, which now uses Yahoo Finance
-    const response = await fetch(`/api/market/stock/${symbol}`);
+    const response = await fetch(`${backendUrl}/api/market/stock/${symbol}`);
     const data = await response.json();
     if (data.error) {
       console.error("Backend API error:", data.error);
