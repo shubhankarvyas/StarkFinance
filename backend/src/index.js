@@ -15,7 +15,7 @@ const app = express();
 app.use(helmet());
 // Configure CORS for Vercel frontend
 app.use(cors({
-    origin: ['https://stark-finance.vercel.app', 'http://localhost:5001'],
+    origin: ['https://stark-finance.vercel.app', 'http://localhost:3000', 'http://localhost:5001'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
