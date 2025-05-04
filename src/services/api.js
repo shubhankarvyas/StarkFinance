@@ -32,14 +32,18 @@ export const fetchStockData = async (symbol) => {
       throw new Error(data.error);
     }
     // Format data for frontend compatibility
+    // Ensure numeric values and handle undefined cases
+    const lastPrice = parseFloat(data.lastPrice) || 0;
+    const change = parseFloat(data.change) || 0;
+
     return {
       symbol: data.symbol,
-      currentPrice: data.price?.toFixed(2) ?? '0.00',
-      priceChange: data.change?.toFixed(2) ?? '0.00',
-      percentChange: data.change?.toFixed(2) ?? '0.00',
-      data: data.data || [], // Use the data array directly from backend
-      price: data.price ?? 0,
-      change: data.change ?? 0
+      currentPrice: lastPrice.toFixed(2),
+      priceChange: change.toFixed(2),
+      percentChange: (lastPrice > 0 ? (change / lastPrice) * 100 : 0).toFixed(2),
+      data: data.data || [],
+      price: lastPrice,
+      change: change
     };
   } catch (error) {
     console.error(`Error fetching stock data for ${symbol}:`, error);
@@ -159,15 +163,12 @@ export const fetchAllStocks = async () => {
 // Fetch news data
 export const fetchNews = async () => {
   try {
-    const url = `${NEWS_API_BASE_URL}/top-headlines?country=${NEWS_COUNTRY}&category=${NEWS_CATEGORY}&apiKey=${NEWS_API_KEY}`;
-    const response = await fetch(url);
-
+    const response = await fetch(`${backendUrl}/api/news`);
     if (!response.ok) {
       throw new Error("Failed to fetch news");
     }
-
     const data = await response.json();
-    return data.articles || [];
+    return data || [];
   } catch (error) {
     console.error("Error fetching news:", error);
     return [];

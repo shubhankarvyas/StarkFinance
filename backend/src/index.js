@@ -62,6 +62,12 @@ app.get('/api', (req, res) => {
     });
 });
 
+// Add /api/news endpoint to forward to /api/market/news
+app.get('/api/news', (req, res, next) => {
+    req.url = '/news';
+    return marketRoutes(req, res, next);
+});
+
 // Mount routes
 app.use('/api/market', marketRoutes);
 app.use('/api/ai', aiRoutes);
