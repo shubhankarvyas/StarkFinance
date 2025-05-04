@@ -35,6 +35,32 @@ export const getExpenses = async (userId) => {
     }
 };
 
+// Budget Storage
+export const saveBudget = async (userId, budgetData) => {
+    try {
+        const budgetRef = doc(db, 'budgets', userId);
+        await setDoc(budgetRef, {
+            ...budgetData,
+            lastUpdated: new Date().toISOString()
+        });
+        return true;
+    } catch (error) {
+        console.error('Error saving budget:', error);
+        return false;
+    }
+};
+
+export const getBudget = async (userId) => {
+    try {
+        const budgetRef = doc(db, 'budgets', userId);
+        const docSnap = await getDoc(budgetRef);
+        return docSnap.exists() ? docSnap.data() : null;
+    } catch (error) {
+        console.error('Error fetching budget:', error);
+        return null;
+    }
+};
+
 // Portfolio Tracking Storage - Only stores latest state
 export const savePortfolio = async (userId, portfolioData) => {
     try {

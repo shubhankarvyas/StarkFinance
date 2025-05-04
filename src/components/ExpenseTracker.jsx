@@ -33,7 +33,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Legend, PieChart, Pie, Cell, Tooltip as RechartsTooltip } from 'recharts';
 import { useAuth } from '../contexts/AuthContext';
-import { saveExpense, getExpenses } from '../services/firebaseStorage';
+import { saveExpense, getExpenses, saveBudget, getBudget } from '../services/firebaseStorage';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d', '#ffc658'];
 
@@ -126,22 +126,28 @@ const ExpenseTracker = () => {
         }));
     };
 
-    // Load expenses from Firebase when component mounts
+    // Load expenses and budgets from Firebase when component mounts
     useEffect(() => {
-        const loadExpenses = async () => {
+        const loadData = async () => {
             if (user?.uid) {
                 setLoading(true);
                 try {
-                    const userExpenses = await getExpenses(user.uid);
+                    const [userExpenses, userBudget] = await Promise.all([
+                        getExpenses(user.uid),
+                        getBudget(user.uid)
+                    ]);
                     setExpenses(userExpenses);
+                    if (userBudget) {
+                        setBudgets(userBudget.budgets || {});
+                    }
                 } catch (error) {
-                    console.error('Error loading expenses:', error);
+                    console.error('Error loading data:', error);
                 } finally {
                     setLoading(false);
                 }
             }
         };
-        loadExpenses();
+        loadData();
     }, [user?.uid]);
 
     const handleSubmit = async () => {
@@ -171,12 +177,23 @@ const ExpenseTracker = () => {
         }
     };
 
-    const handleBudgetSubmit = () => {
-        setBudgets(prev => ({
-            ...prev,
-            [budgetFormData.category]: parseFloat(budgetFormData.amount)
-        }));
-        handleCloseBudgetDialog();
+    const handleBudgetSubmit = async () => {
+        if (!user?.uid) return;
+
+        setLoading(true);
+        try {
+            const updatedBudgets = {
+                ...budgets,
+                [budgetFormData.category]: parseFloat(budgetFormData.amount)
+            };
+            await saveBudget(user.uid, { budgets: updatedBudgets });
+            setBudgets(updatedBudgets);
+            handleCloseBudgetDialog();
+        } catch (error) {
+            console.error('Error saving budget:', error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     const handleDelete = (index) => {
@@ -548,8 +565,6 @@ const ExpenseTracker = () => {
             <Dialog
                 open={openBudgetDialog}
                 onClose={handleCloseBudgetDialog}
-                maxWidth="xs"
-                fullWidth
                 PaperProps={{
                     sx: {
                         borderRadius: 3,
