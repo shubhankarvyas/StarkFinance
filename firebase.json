@@ -8,6 +8,10 @@
     ],
     "rewrites": [
       {
+        "source": "/api/**",
+        "destination": "https://stark-finance-rc24.vercel.app/api/**"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
