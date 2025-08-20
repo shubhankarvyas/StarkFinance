@@ -10,7 +10,7 @@ const aiController = {
     async chat(req, res) {
         try {
             const { message } = req.body;
-            const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+            const model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro' });
 
             const prompt = `You are a helpful financial advisor. Please respond to: ${message}`;
             const result = await model.generateContent(prompt);
@@ -27,7 +27,7 @@ const aiController = {
     async analyzeInvestment(req, res) {
         try {
             const { investment_type, amount, timeframe, risk_tolerance } = req.body;
-            const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+            const model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro' });
 
             const prompt = `As an investment analysis expert, analyze this investment opportunity:\n\nType: ${investment_type}\nAmount: $${amount}\nTimeframe: ${timeframe}\nRisk Tolerance: ${risk_tolerance}\n\nProvide a detailed analysis including potential risks and rewards.`;
 

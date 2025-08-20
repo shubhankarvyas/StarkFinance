@@ -235,7 +235,7 @@ const FinancialAssistant = () => {
       }
 
       const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+      const model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro' });
 
       // Create conversation context from recent messages
       const context = messages

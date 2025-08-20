@@ -14,9 +14,8 @@ import {
     ListItemAvatar,
     useTheme,
     CircularProgress,
-    Zoom,
-    Fade,
-    Alert
+    Zoom, 
+
 } from '@mui/material';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
@@ -72,7 +71,7 @@ const AIAssistant = () => {
 
         try {
             const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
-            const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+            const model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro' });
 
             const context = messages.map(msg => `${msg.sender}: ${msg.text}`).join('\n');
             const prompt = `You are a helpful AI assistant. Based on this conversation:\n${context}\n\nUser: ${input.trim()}\n\nProvide a concise and helpful response.`;

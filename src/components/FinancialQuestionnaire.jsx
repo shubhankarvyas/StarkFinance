@@ -129,7 +129,7 @@ const FinancialQuestionnaire = ({ userId }) => {
     const generatePortfolioAllocation = useCallback(async (riskTolerance, data) => {
         try {
             const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
-            const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+            const model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro' });
 
             const prompt = `As a financial advisor, analyze this investor profile and suggest an optimal portfolio allocation:
 
@@ -167,7 +167,7 @@ Respond with only the three numbers in order, separated by commas.`;
     const generateRecommendations = useCallback(async (data) => {
         try {
             const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
-            const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+            const model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro' });
 
             const prompt = `As a financial advisor, provide personalized investment recommendations based on this profile:
 
@@ -213,7 +213,7 @@ Keep each recommendation concise and practical.`;
             }
 
             const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
-            const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+            const model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro' });
 
             const monthlyIncome = data.income / 12;
             const debtToIncomeRatio = (data.debtAmount / data.income) * 100;

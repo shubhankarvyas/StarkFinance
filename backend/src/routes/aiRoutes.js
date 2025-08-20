@@ -12,7 +12,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 router.post('/chat', async (req, res) => {
     try {
         const { messages } = req.body;
-        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+        const model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro' });
 
         const context = messages
             .map(msg => `${msg.type}: ${msg.content}`)
@@ -34,7 +34,7 @@ router.post('/chat', async (req, res) => {
 router.post('/financial-advice', async (req, res) => {
     try {
         const { query, financialContext } = req.body;
-        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+        const model = genAI.getGenerativeModel({ model: 'gemini-2.5-pro' });
 
         const prompt = `As a financial advisor, provide advice for this query:\n\nContext: ${financialContext}\nQuery: ${query}\n\nProvide specific, actionable recommendations.`;
 
